@@ -48,7 +48,7 @@ python -m torch.distributed.launch --nproc_per_node=1 main_swav.py \
 zip -r imagenet_swav_pretext.zip swav_checkpoint
 ./gdrive upload imagenet_swav_pretext.zip
 mkdir swav_ssl_checkpoint
-python -m torch.distributed.launch --nproc_per_node=8 eval_semisup.py \
+python -m torch.distributed.launch --nproc_per_node=1 eval_semisup.py \
 --data_path imagenet \
 --pretrained swav_checkpoint/swav_2ep_pretrain.pth.tar \
 --labels_perc "10" \
