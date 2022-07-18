@@ -89,9 +89,9 @@ parser.add_argument("--dump_path", type=str, default=".",
 parser.add_argument("--seed", type=int, default=31, help="seed")
 
 def main():
-    lr_values = np.logspace(args.lr_min, args.lr_max, num= 10) if args.logspace else np.linspace(args.lr_min, args.lr_max, num= 10) 
     global args
     args = parser.parse_args()
+    lr_values = np.logspace(args.lr_min, args.lr_max, num= 10) if args.logspace else np.linspace(args.lr_min, args.lr_max, num= 10) 
     init_distributed_mode(args)
     fix_random_seeds(args.seed)
     logger, training_stats = initialize_exp(args, "epoch", "loss")
