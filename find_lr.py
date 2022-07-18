@@ -87,6 +87,7 @@ parser.add_argument("--syncbn_process_group_size", type=int, default=8, help="""
 parser.add_argument("--dump_path", type=str, default=".",
                     help="experiment dump path for checkpoints and log")
 parser.add_argument("--seed", type=int, default=31, help="seed")
+args = parser.parse_args()
 
 lr_values = np.logspace(args.lr_min, args.lr_max, num= 10) if args.logspace else np.linspace(args.lr_min, args.lr_max, num= 10) 
 
