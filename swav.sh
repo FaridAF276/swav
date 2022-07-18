@@ -1,4 +1,4 @@
-# apt-get install -y git && git clone https://github.com/FaridAF276/SSL_MoCo_New.git && cd SSL_MoCo_New && chmod +x swav.sh && ./swav.sh
+# apt-get install -y git && git clone https://github.com/FaridAF276/swav.git && cd swav && chmod +x swav.sh && ./swav.sh
 #Setup everything to install apex correctly (configure vast.ai with cuda 10.1 and pytorch 1.4.0)
 apt-get install -y unzip zip git wget
 apt-get install -y libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
@@ -51,6 +51,7 @@ mkdir swav_ssl_checkpoint
 python -m torch.distributed.launch --nproc_per_node=1 eval_semisup.py \
 --data_path imagenet \
 --pretrained swav_checkpoint/swav_2ep_pretrain.pth.tar \
+--epochs 2 \
 --labels_perc "10" \
 --lr 0.01 \
 --lr_last_layer 0.2\

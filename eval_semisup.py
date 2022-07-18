@@ -95,12 +95,12 @@ def main():
     train_data_path = os.path.join(args.data_path, "train")
     train_dataset = datasets.ImageFolder(train_data_path)
     # take either 1% or 10% of images
-    subset_file = urllib.request.urlopen("https://raw.githubusercontent.com/google-research/simclr/master/imagenet_subsets/" + str(args.labels_perc) + "percent.txt")
-    list_imgs = [li.decode("utf-8").split('\n')[0] for li in subset_file]
-    train_dataset.samples = [(
-        os.path.join(train_data_path, li.split('_')[0], li),
-        train_dataset.class_to_idx[li.split('_')[0]]
-    ) for li in list_imgs]
+    # subset_file = urllib.request.urlopen("https://raw.githubusercontent.com/google-research/simclr/master/imagenet_subsets/" + str(args.labels_perc) + "percent.txt")
+    # list_imgs = [li.decode("utf-8").split('\n')[0] for li in subset_file]
+    # train_dataset.samples = [(
+    #     os.path.join(train_data_path, li.split('_')[0], li),
+    #     train_dataset.class_to_idx[li.split('_')[0]]
+    # ) for li in list_imgs]
     val_dataset = datasets.ImageFolder(os.path.join(args.data_path, "val"))
     tr_normalize = transforms.Normalize(
         mean=[0.485, 0.456, 0.406], std=[0.228, 0.224, 0.225]
