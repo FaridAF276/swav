@@ -225,3 +225,5 @@ def main():
                 )
         if queue is not None:
             torch.save({"queue": queue}, queue_path)
+if __name__ == "__main__":
+    main()
