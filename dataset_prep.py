@@ -1,6 +1,6 @@
 import os, shutil
 import numpy as np
-import splitfolders
+# import splitfolders
 import argparse
 parser = argparse.ArgumentParser(description='Data preparation script')
 parser.add_argument('--dataset_dir', type=str, help='name of the path where dataset is')
@@ -40,10 +40,10 @@ def pre_text_dowstream_ds_split(root='', percentage_split=0.3):
         # print("From:\t", os.path.join(root, folder, classes, image), "\tTo:\t", os.path.join("downstream", folder, classes, image))
     
 def main():
-    if(args.split_train_test):
-        splitfolders.ratio(args.dataset_dir, output=args.dataset_dir+"_split",
-        seed=1337, ratio=(.8,.1, .1), group_prefix=None, move=True) # default values
-        pre_text_dowstream_ds_split(root=args.dataset_dir+"_split", percentage_split=args.percentage)
+    # if(args.split_train_test):
+        # splitfolders.ratio(args.dataset_dir, output=args.dataset_dir+"_split",
+        # seed=1337, ratio=(.8,.1, .1), group_prefix=None, move=True) # default values
+        # pre_text_dowstream_ds_split(root=args.dataset_dir+"_split", percentage_split=args.percentage)
     pre_text_dowstream_ds_split(root=args.dataset_dir, percentage_split=args.percentage)
 if(__name__=="__main__"):
     main()
