@@ -35,7 +35,7 @@ time python -m torch.distributed.launch --nproc_per_node=8 eval_semisup.py \
 --epochs 1 \
 --labels_perc "10" \
 --lr 0.01 \
---lr_last_layer 0.2\
+--lr_last_layer 0.2 \
 --dump_path swav_ssl_checkpoint
 zip -r imagenet_swav_downstr.zip swav_ssl_checkpoint
 ./gdrive upload imagenet_swav_downstr.zip

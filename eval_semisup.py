@@ -101,7 +101,8 @@ def main():
     #     os.path.join(train_data_path, li.split('_')[0], li),
     #     train_dataset.class_to_idx[li.split('_')[0]]
     # ) for li in list_imgs]
-    val_dataset = datasets.ImageFolder(os.path.join(args.data_path, "val"))
+    val_root= os.path.join(args.data_path, "val") if os.path.isdir(os.path.join(args.data_path, "val")) else os.path.join(args.data_path, "test")
+    val_dataset = datasets.ImageFolder(val_root)
     tr_normalize = transforms.Normalize(
         mean=[0.485, 0.456, 0.406], std=[0.228, 0.224, 0.225]
     )
