@@ -1,4 +1,4 @@
-# apt-get install -y git && git clone https://github.com/FaridAF276/swav.git && cd swav && chmod +x swav_imagenet.sh && bash -e swav_imagenet.sh
+# apt-get install -y git && git clone https://github.com/FaridAF276/swav.git && chmod +x swav/swav_imagenet.sh && bash -e swav/swav_imagenet.sh
 #Setup everything to install apex correctly (configure vast.ai with cuda 10.1 and pytorch 1.4.0)
 wget https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_linux_386.tar.gz
 tar -xvf gdrive_2.1.1_linux_386.tar.gz
@@ -7,7 +7,7 @@ apt-get install -y unzip zip git wget
 apt-get install -y libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
 wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
 bash ~/Anaconda3-2022.05-Linux-x86_64.sh
-git clone https://github.com/facebookresearch/swav.git && cd swav
+cd swav
 source ~/anaconda3/etc/profile.d/conda.sh # Or path to where your conda is
 conda create -y --name=swav python=3.6.6
 conda activate swav
