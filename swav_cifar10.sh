@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ##Download dataset
 
 gdown --fuzzy https://drive.google.com/file/d/1ny6vBH54X0qV07EsNhgddHFGYgoROswy/view?usp=sharing
