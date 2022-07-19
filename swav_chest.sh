@@ -1,4 +1,4 @@
-# apt-get install -y git && git clone https://github.com/FaridAF276/swav.git && cd swav && chmod +x swav.sh && ./swav.sh
+# apt-get install -y git && git clone https://github.com/FaridAF276/swav.git && cd swav && chmod +x swav_imagenet.sh && bash -e swav_imagenet.sh
 #Setup everything to install apex correctly (configure vast.ai with cuda 10.1 and pytorch 1.4.0)
 wget https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_linux_386.tar.gz
 tar -xvf gdrive_2.1.1_linux_386.tar.gz
@@ -29,8 +29,8 @@ conda install -y -c conda-forge gdown
 
 ##Download dataset
 
-gdown --fuzzy https://drive.google.com/file/d/1NeBMqfrgLPJcb6_w9-2QZ7ZgYeSzG__u/view?usp=sharing
-unzip tiny_imagenet_200.zip
+wget https://data.mendeley.com/public-files/datasets/jctsfj2sfn/files/148dd4e7-636b-404b-8a3c-6938158bc2c0/file_downloaded && \
+unzip file_downloaded
 mkdir swav_checkpoint
 
 time python dataset_preparation.py \
