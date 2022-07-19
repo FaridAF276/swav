@@ -10,7 +10,7 @@ time python dataset_prep.py \
 --percentage 0.2
 
 time python -m torch.distributed.launch --nproc_per_node=8 main_swav.py \
---data_path imagenet/train \
+--data_path pretext/train \
 --epochs 1 \
 --base_lr 0.6 \
 --final_lr 0.0006 \
@@ -30,7 +30,7 @@ zip -r imagenet_swav_pretext.zip swav_checkpoint
 ./gdrive upload imagenet_swav_pretext.zip
 mkdir swav_ssl_checkpoint
 time python -m torch.distributed.launch --nproc_per_node=8 eval_semisup.py \
---data_path imagenet \
+--data_path downstream \
 --pretrained swav_checkpoint/swav_2ep_pretrain.pth.tar \
 --epochs 1 \
 --labels_perc "10" \
