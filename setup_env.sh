@@ -11,7 +11,7 @@ wget -nc https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
 bash ~/Anaconda3-2022.05-Linux-x86_64.sh -b -p
 conda create -y --name=swav python=3.6.6 pandas=0.25.0 opencv
 source ~/anaconda3/etc/profile.d/conda.sh # Or path to where your conda is
-conda activate swav
+conda activate /opt/conda/envs/swav
 conda install -y pytorch==1.4.0 torchvision==0.5.0 cudatoolkit=10.1 -c pytorch
 # conda install -y -c conda-forge cudatoolkit-dev=10.1.243
 which pip

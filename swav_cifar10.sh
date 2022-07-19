@@ -10,8 +10,8 @@ time python dataset_prep.py \
 --dataset_dir cifar10 \
 --percentage 0.2
 
-time python -m torch.distributed.launch --nproc_per_node=8 main_swav.py \
---data_path cifar10/train \
+time python -m torch.distributed.launch --nproc_per_node=2 main_swav.py \
+--data_path pretext/train \
 --epochs 1 \
 --base_lr 0.6 \
 --final_lr 0.0006 \
@@ -30,8 +30,8 @@ time python -m torch.distributed.launch --nproc_per_node=8 main_swav.py \
 zip -r cifar10_swav_pretext.zip swav_checkpoint
 ./gdrive upload cifar10_swav_pretext.zip
 mkdir swav_ssl_checkpoint
-time python -m torch.distributed.launch --nproc_per_node=8 eval_semisup.py \
---data_path cifar10 \
+time python -m torch.distributed.launch --nproc_per_node=2 eval_semisup.py \
+--data_path downstream \
 --pretrained swav_checkpoint/swav_2ep_pretrain.pth.tar \
 --epochs 1 \
 --labels_perc "10" \
