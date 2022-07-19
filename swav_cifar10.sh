@@ -6,7 +6,7 @@ tar -xvf gdrive_2.1.1_linux_386.tar.gz
 apt-get install -y unzip zip git wget
 apt-get install -y libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
 wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
-bash ~/Anaconda3-2022.05-Linux-x86_64.sh -b -p -f
+bash ~/Anaconda3-2022.05-Linux-x86_64.sh -b -p
 cd swav
 source ~/anaconda3/etc/profile.d/conda.sh # Or path to where your conda is
 conda create -y --name=swav python=3.6.6
@@ -30,8 +30,8 @@ conda install -y -c conda-forge gdown
 
 ##Download dataset
 
-gdown --fuzzy https://drive.google.com/file/d/1_dRbJEpMH7436l8aU4xrGHcFIE9i5TX7/view?usp=sharing
-unzip tiny_imagenet_200.zip
+gdown --fuzzy https://drive.google.com/file/d/1ny6vBH54X0qV07EsNhgddHFGYgoROswy/view?usp=sharing
+unzip cifar10.zip
 mkdir swav_checkpoint
 
 time python dataset_preparation.py \
