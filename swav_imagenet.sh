@@ -3,7 +3,7 @@
 
 gdown --fuzzy https://drive.google.com/file/d/1_dRbJEpMH7436l8aU4xrGHcFIE9i5TX7/view?usp=sharing
 unzip tiny_imagenet_200.zip
-mkdir swav_checkpoint
+if not exist swav_checkpoint mkdir swav_checkpoint
 
 time python dataset_prep.py \
 --dataset_dir imagenet \

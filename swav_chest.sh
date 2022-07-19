@@ -3,7 +3,7 @@
 
 wget https://data.mendeley.com/public-files/datasets/jctsfj2sfn/files/148dd4e7-636b-404b-8a3c-6938158bc2c0/file_downloaded && \
 unzip file_downloaded
-mkdir swav_checkpoint
+if not exist swav_checkpoint mkdir swav_checkpoint
 splitfolders --output ChestX --ratio .8 .1 .1 --move \
 -- COVID19_Pneumonia_Normal_Chest_Xray_PA_Dataset
 time python dataset_prep.py \
