@@ -20,6 +20,7 @@ def pre_text_dowstream_ds_split(root='', percentage_split=0.3):
     cat=os.listdir(os.path.join(root, folder))
     for classes in cat:
       img=os.listdir(os.path.join(root, folder, classes))
+      img=[image for image in img if 'JPEG' in image]
       images_per_class=len(img)
       if not os.path.exists(os.path.join("pretext", folder, classes)):
         os.makedirs(os.path.join("pretext", folder, classes))
