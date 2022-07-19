@@ -8,6 +8,7 @@ git clone https://github.com/facebookresearch/swav.git && cd swav
 source ~/anaconda3/etc/profile.d/conda.sh # Or path to where your conda is
 conda create -y --name=swav python=3.6.6
 conda activate swav
+conda update -n base -c defaults conda
 conda install -y pytorch==1.4.0 torchvision==0.5.0 cudatoolkit=10.1 -c pytorch
 # conda install -y -c conda-forge cudatoolkit-dev=10.1.243
 conda install -y -c conda-forge opencv=4.6.0
