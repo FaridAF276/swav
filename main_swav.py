@@ -170,7 +170,7 @@ def main():
     # build optimizer
     optimizer = torch.optim.SGD(
         model.parameters(),
-        lr=args.base_lrargs.base_lr,
+        lr=args.base_lr,
         momentum=0.9,
         weight_decay=args.wd,
     )

@@ -26,6 +26,7 @@ python -c 'import apex; from apex.parallel import SyncBatchNorm; print(SyncBatch
 cd ~/swav/
 conda install -y -c conda-forge gdown
 #install gdrive
+# tail -n +29 swav_imagenet.sh | bash
 
 ##Download dataset
 

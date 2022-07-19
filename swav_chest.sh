@@ -25,20 +25,23 @@ python -c 'import apex; from apex.parallel import LARC' # should run and return 
 python -c 'import apex; from apex.parallel import SyncBatchNorm; print(SyncBatchNorm.__module__)' # should run and return apex.parallel.optimized_sync_batchnorm 
 cd ~/swav/
 conda install -y -c conda-forge gdown
+pip install split-folders
 #install gdrive
+# tail -n +29 swav_chest.sh | bash
 
 ##Download dataset
 
 wget https://data.mendeley.com/public-files/datasets/jctsfj2sfn/files/148dd4e7-636b-404b-8a3c-6938158bc2c0/file_downloaded && \
 unzip file_downloaded
 mkdir swav_checkpoint
-
-time python dataset_preparation.py \
---dataset_dir imagenet \
+splitfolders --output ChestX --ratio .8 .1 .1 --move \
+-- COVID19_Pneumonia_Normal_Chest_Xray_PA_Dataset
+time python dataset_prep.py \
+--dataset_dir ChestX \
 --percentage 0.2
 
 time python -m torch.distributed.launch --nproc_per_node=8 main_swav.py \
---data_path imagenet/train \
+--data_path pretext/train \
 --epochs 1 \
 --base_lr 0.6 \
 --final_lr 0.0006 \
@@ -58,7 +61,7 @@ zip -r imagenet_swav_pretext.zip swav_checkpoint
 ./gdrive upload imagenet_swav_pretext.zip
 mkdir swav_ssl_checkpoint
 time python -m torch.distributed.launch --nproc_per_node=8 eval_semisup.py \
---data_path imagenet \
+--data_path downstream \
 --pretrained swav_checkpoint/swav_2ep_pretrain.pth.tar \
 --epochs 1 \
 --labels_perc "10" \
