@@ -9,13 +9,13 @@ apt-get install -y unzip zip git wget
 apt-get install -y libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
 wget -nc https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
 bash ~/Anaconda3-2022.05-Linux-x86_64.sh -b -p
-cd swav
 conda create -y --name=swav python=3.6.6 pandas=0.25.0 opencv
 source ~/anaconda3/etc/profile.d/conda.sh # Or path to where your conda is
 conda activate swav
 conda install -y pytorch==1.4.0 torchvision==0.5.0 cudatoolkit=10.1 -c pytorch
 # conda install -y -c conda-forge cudatoolkit-dev=10.1.243
 which pip
+cd swav
 git clone "https://github.com/NVIDIA/apex"
 cd apex
 git checkout 4a1aa97e31ca87514e17c3cd3bbc03f4204579d0

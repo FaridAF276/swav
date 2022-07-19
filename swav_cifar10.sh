@@ -4,7 +4,7 @@
 
 gdown --fuzzy https://drive.google.com/file/d/1ny6vBH54X0qV07EsNhgddHFGYgoROswy/view?usp=sharing
 unzip cifar10.zip
-mkdir swav_checkpoint
+if not exist swav_checkpoint mkdir swav_checkpoint
 
 time python dataset_prep.py \
 --dataset_dir imagenet \
