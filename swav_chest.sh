@@ -1,12 +1,13 @@
 # apt-get install -y git && git clone https://github.com/FaridAF276/swav.git && chmod +x swav/swav_chest.sh && bash -e swav/swav_chest.sh
 #Setup everything to install apex correctly (configure vast.ai with cuda 10.1 and pytorch 1.4.0)
+#install gdrive
 wget https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_linux_386.tar.gz
 tar -xvf gdrive_2.1.1_linux_386.tar.gz
 ./gdrive about
 apt-get install -y unzip zip git wget
 apt-get install -y libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
 wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
-bash ~/Anaconda3-2022.05-Linux-x86_64.sh -b -p -f
+bash ~/Anaconda3-2022.05-Linux-x86_64.sh -b -p
 cd swav
 source ~/anaconda3/etc/profile.d/conda.sh # Or path to where your conda is
 conda create -y --name=swav python=3.6.6
@@ -26,7 +27,6 @@ python -c 'import apex; from apex.parallel import SyncBatchNorm; print(SyncBatch
 cd ~/swav/
 conda install -y -c conda-forge gdown
 pip install split-folders
-#install gdrive
 # tail -n +29 swav_chest.sh | bash
 
 ##Download dataset

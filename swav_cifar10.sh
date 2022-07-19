@@ -25,7 +25,6 @@ python -c 'import apex; from apex.parallel import LARC' # should run and return 
 python -c 'import apex; from apex.parallel import SyncBatchNorm; print(SyncBatchNorm.__module__)' # should run and return apex.parallel.optimized_sync_batchnorm 
 cd ~/swav/
 conda install -y -c conda-forge gdown
-#install gdrive
 # tail -n +29 swav_imagenet.sh | bash
 
 ##Download dataset
