@@ -1,3 +1,4 @@
+from ast import Index
 from main_swav import *
 import pandas as pd
 parser = argparse.ArgumentParser(description="Implementation of lr find")
@@ -236,7 +237,7 @@ def main():
         # lr_dict['dataset'].append(args.dataset)
         lr_dict['dataset_path'].append(args.data_path)
         lr_dict['last_loss'].append(last_loss)
-    lr_results=pd.DataFrame(lr_dict)
+    lr_results=pd.DataFrame.from_dict(lr_dict, orient='index')
     lr_results.to_csv(file_name)
 
 def train(train_loader, model, optimizer, epoch, lr_schedule, queue):

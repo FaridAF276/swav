@@ -9,7 +9,7 @@ time python -m torch.distributed.launch --nproc_per_node=1 find_lr.py \
 --warmup_epochs 0 \
 --batch_size 32 \
 --dump_path swav_checkpoint \
---size_crops 224 96 \
+--size_crops 32 16 \
 --nmb_crops 2 6 \
 --min_scale_crops 0.14 0.05 \
 --max_scale_crops 1. 0.14 \
