@@ -4,7 +4,7 @@
 
 gdown --fuzzy https://drive.google.com/file/d/1B0GLPjsXgtWLhV5SvBT1Kti1QHKWql2t/view?usp=sharing
 unzip stl10.zip
-if not exist swav_checkpoint mkdir swav_checkpoint
+mkdir -p swav_checkpoint
 
 time python dataset_prep.py \
 --dataset_dir stl10 \
@@ -28,8 +28,8 @@ time python -m torch.distributed.launch --nproc_per_node=2 main_swav.py \
 --epoch_queue_starts 15
 
 zip -r stl10_swav_pretext.zip swav_checkpoint
-./gdrive upload stl10_swav_pretext.zip
-mkdir swav_ssl_checkpoint
+.~/gdrive upload stl10_swav_pretext.zip
+mkdir -p swav_ssl_checkpoint
 time python -m torch.distributed.launch --nproc_per_node=2 eval_semisup.py \
 --data_path downstream \
 --pretrained swav_checkpoint/checkpoint.pth.tar \
@@ -39,4 +39,4 @@ time python -m torch.distributed.launch --nproc_per_node=2 eval_semisup.py \
 --lr_last_layer 0.2 \
 --dump_path swav_ssl_checkpoint
 zip -r stl10_swav_downstr.zip swav_ssl_checkpoint
-./gdrive upload stl10_swav_downstr.zip
+.~/gdrive upload stl10_swav_downstr.zip

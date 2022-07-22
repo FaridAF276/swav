@@ -1,8 +1,8 @@
 time python -m torch.distributed.launch --nproc_per_node=1 find_lr.py \
---data_path imagenet/train \
+--data_path cifar10/train \
 --epochs 2 \
 --base_lr 0.6 \
---lr_minx 0.4 \
+--lr_min 0.4 \
 --lr_max 0.6 \
 --logspace \
 --final_lr 0.0006 \

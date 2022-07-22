@@ -1,4 +1,5 @@
 from main_swav import *
+import pandas as pd
 parser = argparse.ArgumentParser(description="Implementation of lr find")
 #########################
 #### lr parameters ####
@@ -114,6 +115,12 @@ def main():
         drop_last=True
     )
     logger.info("Building data done with {} images loaded.".format(len(train_dataset)))
+    lr_dict={
+        'dataset_path':[],
+        'lr':[],
+        'last_loss': []
+    }
+    file_name="learning_rate.csv"
     for lr_item in lr_values : 
         args.base_lr=lr_item
          # build model
@@ -202,6 +209,7 @@ def main():
 
             # train the network
             scores, queue = train(train_loader, model, optimizer, epoch, lr_schedule, queue)
+            last_loss=scores[1]
             training_stats.update(scores)
 
             # save checkpoints
@@ -224,7 +232,12 @@ def main():
                     )
             if queue is not None:
                 torch.save({"queue": queue}, queue_path)
-   
+        lr_dict['lr'].append(lr_item)
+        # lr_dict['dataset'].append(args.dataset)
+        lr_dict['dataset_path'].append(args.data_path)
+        lr_dict['last_loss'].append(last_loss)
+    lr_results=pd.DataFrame(lr_dict)
+    lr_results.to_csv(file_name)
 
 def train(train_loader, model, optimizer, epoch, lr_schedule, queue):
     batch_time = AverageMeter()
