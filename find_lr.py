@@ -173,13 +173,13 @@ def main():
 
         # optionally resume from a checkpoint
         to_restore = {"epoch": 0}
-        restart_from_checkpoint(
-            os.path.join(args.dump_path, "checkpoint.pth.tar"),
-            run_variables=to_restore,
-            state_dict=model,
-            optimizer=optimizer,
-            amp=apex.amp,
-        )
+        # restart_from_checkpoint(
+        #     os.path.join(args.dump_path, "checkpoint.pth.tar"),
+        #     run_variables=to_restore,
+        #     state_dict=model,
+        #     optimizer=optimizer,
+        #     amp=apex.amp,
+        # )
         start_epoch = to_restore["epoch"]
 
         # build the queue
