@@ -190,7 +190,7 @@ def main():
         args.queue_length -= args.queue_length % (args.batch_size * args.world_size)
 
         cudnn.benchmark = True
-
+        last_loss=0
         for epoch in range(start_epoch, args.epochs):
 
             # train the network for one epoch
