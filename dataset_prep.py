@@ -8,7 +8,6 @@ parser.add_argument('--percentage', default=0.3, type=float, help='percentage of
 parser.add_argument('--split_train_test', action="store_true", help="If true, split the dataset into train test and val folder")
 
 args = parser.parse_args()
-dataset_path = "/content/COVID19_Pneumonia_Normal_Chest_Xray_PA_Dataset"
 #Create pretext and downstream file
 def pre_text_dowstream_ds_split(root='', percentage_split=0.3):
   if not os.path.exists("pretext") or not os.path.exists("downstream"):
@@ -20,7 +19,7 @@ def pre_text_dowstream_ds_split(root='', percentage_split=0.3):
     cat=os.listdir(os.path.join(root, folder))
     for classes in cat:
       img=os.listdir(os.path.join(root, folder, classes))
-      img=[image for image in img if 'JPEG' in image]
+      img=[image for image in img if 'JPEG' or 'PNG' in image]
       images_per_class=len(img)
       if not os.path.exists(os.path.join("pretext", folder, classes)):
         os.makedirs(os.path.join("pretext", folder, classes))
