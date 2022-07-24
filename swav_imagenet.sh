@@ -3,7 +3,7 @@
 
 gdown --fuzzy https://drive.google.com/file/d/1_dRbJEpMH7436l8aU4xrGHcFIE9i5TX7/view?usp=sharing
 unzip tiny_imagenet_200.zip
-if not exist swav_checkpoint mkdir swav_checkpoint
+mkdir -p swav_checkpoint
 
 time python dataset_prep.py \
 --dataset_dir imagenet \
@@ -28,7 +28,7 @@ time python -m torch.distributed.launch --nproc_per_node=8 main_swav.py \
 
 zip -r imagenet_swav_pretext.zip swav_checkpoint
 ./gdrive upload imagenet_swav_pretext.zip
-mkdir swav_ssl_checkpoint
+mkdir -p swav_ssl_checkpoint
 time python -m torch.distributed.launch --nproc_per_node=8 eval_semisup.py \
 --data_path downstream \
 --pretrained swav_checkpoint/swav_2ep_pretrain.pth.tar \

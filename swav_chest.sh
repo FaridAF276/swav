@@ -3,7 +3,7 @@
 
 wget https://data.mendeley.com/public-files/datasets/jctsfj2sfn/files/148dd4e7-636b-404b-8a3c-6938158bc2c0/file_downloaded && \
 unzip file_downloaded
-if not exist swav_checkpoint mkdir swav_checkpoint
+mkdir -p swav_checkpoint
 splitfolders --output ChestX --ratio .8 .1 .1 --move \
 -- COVID19_Pneumonia_Normal_Chest_Xray_PA_Dataset
 time python dataset_prep.py \
@@ -29,7 +29,7 @@ time python -m torch.distributed.launch --nproc_per_node=8 main_swav.py \
 
 zip -r chest_swav_pretext.zip swav_checkpoint
 ./gdrive upload chest_swav_pretext.zip
-mkdir swav_ssl_checkpoint
+mkdir -p swav_ssl_checkpoint
 time python -m torch.distributed.launch --nproc_per_node=8 eval_semisup.py \
 --data_path downstream \
 --pretrained swav_checkpoint/checkpoint.pth.tar \
