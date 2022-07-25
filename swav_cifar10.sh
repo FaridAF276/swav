@@ -12,13 +12,13 @@ time python dataset_prep.py \
 
 time python -m torch.distributed.launch --nproc_per_node=8 main_swav.py \
 --data_path pretext/train \
---epochs 1 \
+--epochs 5 \
 --base_lr 0.4 \
 --final_lr 0.0006 \
 --warmup_epochs 0 \
 --batch_size 32 \
 --dump_path swav_checkpoint \
---size_crops 224 96 \
+--size_crops 32 96 \
 --nmb_crops 2 6 \
 --min_scale_crops 0.14 0.05 \
 --max_scale_crops 1. 0.14 \

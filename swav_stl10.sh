@@ -1,9 +1,10 @@
 #!/bin/bash
 
 ##Download dataset imagefolder
-
+cd swav
 gdown --fuzzy https://drive.google.com/file/d/1B0GLPjsXgtWLhV5SvBT1Kti1QHKWql2t/view?usp=sharing
-unzip stl10.zip
+unzip -n stl10.zip -d stl10
+rm -rf stl10/unlabelled
 mkdir -p swav_checkpoint
 
 time python dataset_prep.py \
