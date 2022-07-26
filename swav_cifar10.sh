@@ -1,5 +1,6 @@
 #!/bin/bash
-
+#lr: 0.6
+./swav/cifar10.sh
 ##Download dataset
 cd swav
 gdown --fuzzy https://drive.google.com/file/d/1ny6vBH54X0qV07EsNhgddHFGYgoROswy/view?usp=sharing
@@ -11,9 +12,9 @@ time python dataset_prep.py \
 --dataset_dir cifar10 \
 --percentage 0.2
 
-time python -m torch.distributed.launch --nproc_per_node=4 main_swav.py \
+time python -m torch.distributed.launch --nproc_per_node=2 main_swav.py \
 --data_path pretext/train \
---epochs 5 \
+--epochs 2 \
 --base_lr 0.4 \
 --final_lr 0.0006 \
 --warmup_epochs 0 \

@@ -1,7 +1,8 @@
 #! /bin/bash
-
+#lr=0.3
 # apt-get install -y git && git clone https://github.com/FaridAF276/swav.git && chmod +x swav/setup_env.sh && bash -e swav/setup_env.sh
 #Setup everything to install apex correctly (configure vast.ai with cuda 10.1 and pytorch 1.4.0)
+chmod +x swav/swav_cifar10.sh swav/swav_stl10.sh swav/swav_imagenet.sh swav/swav_chest.sh
 wget -nc https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_linux_386.tar.gz
 tar -xvf gdrive_2.1.1_linux_386.tar.gz
 ./gdrive about
@@ -9,8 +10,9 @@ apt-get install -y unzip zip git wget
 apt-get install -y libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
 wget -nc https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
 bash ~/Anaconda3-2022.05-Linux-x86_64.sh -b -p
-conda update -y conda
+conda update -y conda && \
 conda update -y conda-build
+lconda update -n base -c defaults conda
 conda create -y --name=swav python=3.6.6 pandas=0.25.0 opencv
 conda init
 source ~/anaconda3/etc/profile.d/conda.sh # Or path to where your conda is
@@ -27,3 +29,7 @@ python -c 'import apex; from apex.parallel import LARC' # should run and return 
 python -c 'import apex; from apex.parallel import SyncBatchNorm; print(SyncBatchNorm.__module__)' # should run and return apex.parallel.optimized_sync_batchnorm 
 cd ~/swav/
 conda install -y -c conda-forge gdown
+export MASTER_ADDR=127.0.0.1
+export MASTER_PORT=6006
+export WORLD_SIZE=4
+export RANK=0

@@ -1,7 +1,7 @@
 #! /bin/bash
 ##Download dataset
 
-wget https://data.mendeley.com/public-files/datasets/jctsfj2sfn/files/148dd4e7-636b-404b-8a3c-6938158bc2c0/file_downloaded && \
+wget -nc https://data.mendeley.com/public-files/datasets/jctsfj2sfn/files/148dd4e7-636b-404b-8a3c-6938158bc2c0/file_downloaded && \
 unzip file_downloaded
 mkdir -p swav_checkpoint
 splitfolders --output ChestX --ratio .8 .1 .1 --move \
