@@ -55,6 +55,8 @@ def init_distributed_mode(args):
         # read environment variables
         args.rank = int(os.environ["RANK"])
         args.world_size = int(os.environ["WORLD_SIZE"])
+        print(os.environ["RANK"])
+        print(os.environ["WORLD_SIZE"])
 
     # prepare distributed
     dist.init_process_group(

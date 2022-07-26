@@ -1,16 +1,17 @@
 #!/bin/bash
 
 ##Download dataset
-
+cd swav
 gdown --fuzzy https://drive.google.com/file/d/1ny6vBH54X0qV07EsNhgddHFGYgoROswy/view?usp=sharing
 unzip cifar10.zip
-mkdir -p swav_checkpoint
+mkdir -p swav_checkpoint && \
+mkdir -p swav_ssl_checkpoint
 
 time python dataset_prep.py \
 --dataset_dir cifar10 \
 --percentage 0.2
 
-time python -m torch.distributed.launch --nproc_per_node=8 main_swav.py \
+time python -m torch.distributed.launch --nproc_per_node=4 main_swav.py \
 --data_path pretext/train \
 --epochs 5 \
 --base_lr 0.4 \
