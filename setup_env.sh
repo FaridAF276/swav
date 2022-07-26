@@ -12,7 +12,7 @@ wget -nc https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
 bash ~/Anaconda3-2022.05-Linux-x86_64.sh -b -p
 conda update -y conda && \
 conda update -y conda-build
-lconda update -n base -c defaults conda
+conda update -n base -c defaults conda
 conda create -y --name=swav python=3.6.6 pandas=0.25.0 opencv
 conda init
 source ~/anaconda3/etc/profile.d/conda.sh # Or path to where your conda is
