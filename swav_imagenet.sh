@@ -19,6 +19,7 @@ time python -m torch.distributed.launch --nproc_per_node=8 main_swav.py \
 --dump_path swav_checkpoint \
 --size_crops 224 96 \
 --nmb_crops 2 6 \
+--epsilon 0.03 \
 --min_scale_crops 0.14 0.05 \
 --max_scale_crops 1. 0.14 \
 --use_fp16 true \

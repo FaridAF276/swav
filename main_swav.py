@@ -68,7 +68,7 @@ parser.add_argument("--nmb_prototypes", default=3000, type=int,
                     help="number of prototypes")
 parser.add_argument("--queue_length", type=int, default=0,
                     help="length of the queue (0 for no queue)")
-parser.add_argument("--epoch_queue_starts", type=int, default=15,
+parser.add_argument("--epoch_queue_starts", type=int, default=50,
                     help="from this epoch, we start using a queue")
 
 #########################
