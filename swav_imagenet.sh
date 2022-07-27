@@ -23,6 +23,7 @@ time python -m torch.distributed.launch --nproc_per_node=8 main_swav.py \
 --min_scale_crops 0.14 0.05 \
 --max_scale_crops 1. 0.14 \
 --use_fp16 true \
+--nmb_prototypes 600 \
 --freeze_prototypes_niters 5005 \
 --queue_length 3840 \
 --epoch_queue_starts 15
