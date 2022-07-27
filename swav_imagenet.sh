@@ -1,8 +1,8 @@
 #! /bin/bash
 ##Download dataset
 
-gdown --fuzzy https://drive.google.com/file/d/1_dRbJEpMH7436l8aU4xrGHcFIE9i5TX7/view?usp=sharing
-unzip tiny_imagenet_200.zip
+gdown --fuzzy https://drive.google.com/file/d/1_dRbJEpMH7436l8aU4xrGHcFIE9i5TX7/view?usp=sharing && \
+unzip tiny-imagenet-200.zip && \
 mkdir -p swav_checkpoint
 
 time python dataset_prep.py \
@@ -15,18 +15,19 @@ time python -m torch.distributed.launch --nproc_per_node=8 main_swav.py \
 --base_lr 0.6 \
 --final_lr 0.0006 \
 --warmup_epochs 0 \
---batch_size 32 \
+--batch_size 64 \
 --dump_path swav_checkpoint \
---size_crops 224 96 \
+--size_crops 32 64 \
 --nmb_crops 2 6 \
 --epsilon 0.03 \
 --min_scale_crops 0.14 0.05 \
 --max_scale_crops 1. 0.14 \
+--hidden_mlp 0 \
 --use_fp16 true \
 --nmb_prototypes 600 \
---freeze_prototypes_niters 5005 \
+--freeze_prototypes_niters 400 \
 --queue_length 3840 \
---epoch_queue_starts 15
+--epoch_queue_starts 30
 
 zip -r imagenet_swav_pretext.zip swav_checkpoint
 ./gdrive upload imagenet_swav_pretext.zip

@@ -20,12 +20,12 @@ time python -m torch.distributed.launch --nproc_per_node=1 main_swav.py \
 --warmup_epochs 0 \
 --batch_size 32 \
 --dump_path swav_checkpoint \
---size_crops 32 96 \
---nmb_crops 2 6 \
+--size_crops 32 \
+--nmb_crops 2 \
 --min_scale_crops 0.14 0.05 \
 --max_scale_crops 1. 0.14 \
 --use_fp16 true \
---nmb_prototypes 150 \
+--nmb_prototypes 90 \
 --hidden_mlp 0 \
 --freeze_prototypes_niters 5005 \
 --queue_length 3840 \
