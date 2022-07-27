@@ -1,6 +1,6 @@
 #! /bin/bash
 #lr=0.3
-# apt-get install -y git && git clone https://github.com/FaridAF276/swav.git && chmod +x swav/setup_env.sh && bash -e swav/setup_env.sh
+# apt-get install -y git && git clone https://github.com/FaridAF276/swav.git && chmod +x swav/setup_env.sh && bash -e swav/setup_env.sh && conda init && source ~/anaconda3/etc/profile.d/conda.sh && conda activate /opt/conda/envs/swav
 #Setup everything to install apex correctly (configure vast.ai with cuda 10.1 and pytorch 1.4.0)
 chmod +x swav/swav_cifar10.sh swav/swav_stl10.sh swav/swav_imagenet.sh swav/swav_chest.sh
 wget -nc https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_linux_386.tar.gz
