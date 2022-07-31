@@ -10,6 +10,7 @@ gdown --fuzzy https://drive.google.com/file/d/1_dRbJEpMH7436l8aU4xrGHcFIE9i5TX7/
 unzip -n tiny-imagenet-200.zip && \
 mkdir -p swav_checkpoint
 
+
 time python dataset_prep.py \
 --dataset_dir imagenet \
 --percentage 0.2

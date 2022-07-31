@@ -17,6 +17,7 @@ time python dataset_prep.py \
 --dataset_dir cifar10 \
 --percentage 0.2
 
+
 time python -m torch.distributed.launch --nproc_per_node=4 main_swav.py \
 --data_path pretext/train \
 --epochs 500 \
