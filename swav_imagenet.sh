@@ -40,7 +40,7 @@ mkdir -p swav_ssl_checkpoint
 time python -m torch.distributed.launch --nproc_per_node=8 eval_semisup.py \
 --data_path downstream \
 --pretrained swav_checkpoint/swav_2ep_pretrain.pth.tar \
---epochs 1 \
+--epochs 20 \
 --labels_perc "10" \
 --lr 0.06 \
 --lr_last_layer 0.2 \
