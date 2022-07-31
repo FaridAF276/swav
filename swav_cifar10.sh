@@ -1,5 +1,11 @@
 #!/bin/bash
 #lr: 0.6
+
+# cat ~/.ssh/authorized_keys | md5sum | awk '{print $1}' > ssh_key_hv; echo -n $VAST_CONTAINERLABEL | md5sum | awk '{print $1}' > instance_id_hv; head -c -1 -q ssh_key_hv instance_id_hv > ~/.vast_api_key; \
+# wget -nc https://raw.githubusercontent.com/vast-ai/vast-python/master/vast.py -O vast; chmod +x vast; \
+# ./vast start instance ${VAST_CONTAINERLABEL:2} && \
+# bash -e swav/swav_cifar10.sh && \
+# ./vast stop instance ${VAST_CONTAINERLABEL:2}
 ##Download dataset
 cd swav
 gdown --fuzzy https://drive.google.com/file/d/1ny6vBH54X0qV07EsNhgddHFGYgoROswy/view?usp=sharing

@@ -1,6 +1,11 @@
 #! /bin/bash
 ##Download dataset
-
+# cat ~/.ssh/authorized_keys | md5sum | awk '{print $1}' > ssh_key_hv; echo -n $VAST_CONTAINERLABEL | md5sum | awk '{print $1}' > instance_id_hv; head -c -1 -q ssh_key_hv instance_id_hv > ~/.vast_api_key; \
+# wget -nc https://raw.githubusercontent.com/vast-ai/vast-python/master/vast.py -O vast; chmod +x vast; \
+# ./vast start instance ${VAST_CONTAINERLABEL:2} && \
+# bash -e swav/swav_imagenet.sh && \
+# ./vast stop instance ${VAST_CONTAINERLABEL:2}
+cd swav
 gdown --fuzzy https://drive.google.com/file/d/1_dRbJEpMH7436l8aU4xrGHcFIE9i5TX7/view?usp=sharing && \
 unzip -n tiny-imagenet-200.zip && \
 mkdir -p swav_checkpoint
