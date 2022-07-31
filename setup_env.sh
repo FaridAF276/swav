@@ -18,6 +18,7 @@ conda init
 source ~/anaconda3/etc/profile.d/conda.sh # Or path to where your conda is
 conda activate /opt/conda/envs/swav
 conda install -y pytorch==1.4.0 torchvision==0.5.0 cudatoolkit=10.1 -c pytorch
+pip install split-folders
 # conda install -y -c conda-forge cudatoolkit-dev=10.1.243
 which pip
 cd swav
