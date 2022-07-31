@@ -35,7 +35,6 @@ time python -m torch.distributed.launch --nproc_per_node=2 main_swav.py \
 --epoch_queue_starts 30
 
 zip -r imagenet_swav_pretext.zip swav_checkpoint
-./gdrive upload imagenet_swav_pretext.zip
 mkdir -p swav_ssl_checkpoint
 time python -m torch.distributed.launch --nproc_per_node=8 eval_semisup.py \
 --data_path downstream \
@@ -46,4 +45,6 @@ time python -m torch.distributed.launch --nproc_per_node=8 eval_semisup.py \
 --lr_last_layer 0.2 \
 --dump_path swav_ssl_checkpoint
 zip -r imagenet_swav_downstr.zip swav_ssl_checkpoint
+cd
+./gdrive upload imagenet_swav_pretext.zip
 ./gdrive upload imagenet_swav_downstr.zip
