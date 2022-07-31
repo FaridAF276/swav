@@ -2,17 +2,17 @@
 ##Download dataset
 
 gdown --fuzzy https://drive.google.com/file/d/1_dRbJEpMH7436l8aU4xrGHcFIE9i5TX7/view?usp=sharing && \
-unzip tiny-imagenet-200.zip && \
+unzip -n tiny-imagenet-200.zip && \
 mkdir -p swav_checkpoint
 
 time python dataset_prep.py \
 --dataset_dir imagenet \
 --percentage 0.2
 
-time python -m torch.distributed.launch --nproc_per_node=4 main_swav.py \
+time python -m torch.distributed.launch --nproc_per_node=2 main_swav.py \
 --data_path pretext/train \
---epochs 1 \
---base_lr 0.6 \
+--epochs 10 \
+--base_lr 0.06 \
 --final_lr 0.0006 \
 --warmup_epochs 0 \
 --batch_size 64 \

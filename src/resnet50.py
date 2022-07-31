@@ -204,7 +204,7 @@ class ResNet(nn.Module):
         else:
             self.projection_head = nn.Sequential(
                 nn.Linear(num_out_filters * block.expansion, hidden_mlp),
-                nn.BatchNorm1d(hidden_mlp),
+                # nn.BatchNorm1d(hidden_mlp),
                 nn.ReLU(inplace=True),
                 nn.Linear(hidden_mlp, output_dim),
             )
