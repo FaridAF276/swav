@@ -10,22 +10,25 @@ time python dataset_prep.py \
 --dataset_dir ChestX \
 --percentage 0.2
 
-time python -m torch.distributed.launch --nproc_per_node=8 main_swav.py \
+time python -m torch.distributed.launch --nproc_per_node=4 main_swav.py \
 --data_path pretext/train \
---epochs 1 \
---base_lr 0.6 \
+--epochs 500 \
+--base_lr 0..1 \
 --final_lr 0.0006 \
 --warmup_epochs 0 \
---batch_size 32 \
+--batch_size 64 \
 --dump_path swav_checkpoint \
---size_crops 224 96 \
+--size_crops 224 500 \
 --nmb_crops 2 6 \
+--epsilon 0.03 \
 --min_scale_crops 0.14 0.05 \
 --max_scale_crops 1. 0.14 \
 --use_fp16 true \
---freeze_prototypes_niters 5005 \
+--nmb_prototypes 6 \
+--freeze_prototypes_niters 400 \
 --queue_length 3840 \
---epoch_queue_starts 15
+--temperature 0.5 \
+--epoch_queue_starts 30
 
 zip -r chest_swav_pretext.zip swav_checkpoint
 ./gdrive upload chest_swav_pretext.zip
