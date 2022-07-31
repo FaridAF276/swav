@@ -9,7 +9,7 @@ time python dataset_prep.py \
 --dataset_dir imagenet \
 --percentage 0.2
 
-time python -m torch.distributed.launch --nproc_per_node=8 main_swav.py \
+time python -m torch.distributed.launch --nproc_per_node=4 main_swav.py \
 --data_path pretext/train \
 --epochs 1 \
 --base_lr 0.6 \
