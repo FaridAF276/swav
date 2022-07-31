@@ -3,7 +3,7 @@
 ##Download dataset
 cd swav
 gdown --fuzzy https://drive.google.com/file/d/1ny6vBH54X0qV07EsNhgddHFGYgoROswy/view?usp=sharing
-unzip cifar10.zip
+unzip -n cifar10.zip
 mkdir -p swav_checkpoint && \
 mkdir -p swav_ssl_checkpoint
 
