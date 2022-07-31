@@ -16,7 +16,7 @@ time python -m torch.distributed.launch --nproc_per_node=4 main_swav.py \
 --base_lr 0.01 \
 --final_lr 0.0006 \
 --warmup_epochs 0 \
---batch_size 64 \
+--batch_size 8 \
 --dump_path swav_checkpoint \
 --size_crops 224 500 \
 --nmb_crops 2 6 \
