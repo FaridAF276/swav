@@ -37,7 +37,7 @@ time python -m torch.distributed.launch --nproc_per_node=4 main_swav.py \
 --temperature 0.5 \
 --epoch_queue_starts 15
 mkdir -p swav_ssl_checkpoint
-time python -m torch.distributed.launch --nproc_per_node=8 eval_semisup.py \
+time python -m torch.distributed.launch --nproc_per_node=4 eval_semisup.py \
 --data_path downstream \
 --pretrained swav_checkpoint/checkpoint.pth.tar \
 --epochs 20 \
@@ -48,5 +48,5 @@ time python -m torch.distributed.launch --nproc_per_node=8 eval_semisup.py \
 zip -r cifar10_swav_pretext.zip swav_checkpoint
 zip -r cifar10_swav_downstr.zip swav_ssl_checkpoint
 cd
-./gdrive upload cifar10_swav_pretext.zip
-./gdrive upload cifar10_swav_downstr.zip
+./gdrive upload swav/cifar10_swav_pretext.zip
+./gdrive upload swav/cifar10_swav_downstr.zip
