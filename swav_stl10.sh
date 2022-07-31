@@ -30,9 +30,6 @@ time python -m torch.distributed.launch --nproc_per_node=2 main_swav.py \
 --queue_length 3840 \
 --temperature 0.5 \
 --epoch_queue_starts 15
-
-zip -r stl10_swav_pretext.zip swav_checkpoint
-.~/gdrive upload stl10_swav_pretext.zip
 mkdir -p swav_ssl_checkpoint
 time python -m torch.distributed.launch --nproc_per_node=2 eval_semisup.py \
 --data_path downstream \
@@ -42,5 +39,8 @@ time python -m torch.distributed.launch --nproc_per_node=2 eval_semisup.py \
 --lr 0.06 \
 --lr_last_layer 0.2 \
 --dump_path swav_ssl_checkpoint
+zip -r stl10_swav_pretext.zip swav_checkpoint
 zip -r stl10_swav_downstr.zip swav_ssl_checkpoint
-.~/gdrive upload stl10_swav_downstr.zip
+cd
+./gdrive upload stl10_swav_pretext.zip
+./gdrive upload stl10_swav_downstr.zip
