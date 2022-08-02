@@ -1,5 +1,9 @@
 #!/bin/bash
-
+# cat ~/.ssh/authorized_keys | md5sum | awk '{print $1}' > ssh_key_hv; echo -n $VAST_CONTAINERLABEL | md5sum | awk '{print $1}' > instance_id_hv; head -c -1 -q ssh_key_hv instance_id_hv > ~/.vast_api_key; \
+# wget -nc https://raw.githubusercontent.com/vast-ai/vast-python/master/vast.py -O vast; chmod +x vast; \
+# ./vast start instance ${VAST_CONTAINERLABEL:2} && \
+# bash -e swav/swav_stl10.sh && \
+# ./vast stop instance ${VAST_CONTAINERLABEL:2}
 ##Download dataset imagefolder
 cd swav
 gdown --fuzzy https://drive.google.com/file/d/1B0GLPjsXgtWLhV5SvBT1Kti1QHKWql2t/view?usp=sharing
@@ -21,7 +25,7 @@ time python -m torch.distributed.launch --nproc_per_node=4 main_swav.py \
 --epsilon 0.03 \
 --dump_path swav_checkpoint \
 --size_crops 32 64 \
---nmb_crops 2 3\
+--nmb_crops 2 3 \
 --min_scale_crops 0.14 0.05 \
 --nmb_prototypes 10 \
 --max_scale_crops 1. 0.14 \
