@@ -15,7 +15,7 @@ time python dataset_prep.py \
 --dataset_dir imagenet \
 --percentage 0.2
 
-time python -m torch.distributed.launch --nproc_per_node=4 main_swav.py \
+time python -m torch.distributed.launch --nproc_per_node=2 main_swav.py \
 --data_path pretext/train \
 --epochs 500 \
 --base_lr 0.1 \
@@ -36,7 +36,7 @@ time python -m torch.distributed.launch --nproc_per_node=4 main_swav.py \
 --epoch_queue_starts 30
 
 zip -r imagenet_swav_pretext.zip swav_checkpoint
-mkdir -p swav_ssl_checkpoint
+mkdir -p swav_ssl_checkpoint && \
 time python -m torch.distributed.launch --nproc_per_node=4 eval_semisup.py \
 --data_path downstream \
 --pretrained swav_checkpoint/checkpoint.pth.tar \
