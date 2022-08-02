@@ -20,7 +20,7 @@ time python dataset_prep.py \
 
 time python -m torch.distributed.launch --nproc_per_node=2 main_swav.py \
 --data_path pretext/train \
---epochs 500 \
+--epochs 200 \
 --base_lr 0.04 \
 --final_lr 0.0006 \
 --warmup_epochs 0 \

@@ -17,7 +17,7 @@ time python dataset_prep.py \
 
 time python -m torch.distributed.launch --nproc_per_node=4 main_swav.py \
 --data_path pretext/train \
---epochs 500 \
+--epochs 200 \
 --base_lr 0.01 \
 --final_lr 0.0006 \
 --warmup_epochs 0 \
@@ -38,7 +38,7 @@ mkdir -p swav_ssl_checkpoint
 time python -m torch.distributed.launch --nproc_per_node=4 eval_semisup.py \
 --data_path downstream \
 --pretrained swav_checkpoint/checkpoint.pth.tar \
---epochs 1 \
+--epochs 200 \
 --labels_perc "10" \
 --lr 0.06 \
 --lr_last_layer 0.2 \
