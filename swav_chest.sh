@@ -1,5 +1,10 @@
 #! /bin/bash
 ##Download dataset
+# cat ~/.ssh/authorized_keys | md5sum | awk '{print $1}' > ssh_key_hv; echo -n $VAST_CONTAINERLABEL | md5sum | awk '{print $1}' > instance_id_hv; head -c -1 -q ssh_key_hv instance_id_hv > ~/.vast_api_key; \
+# wget -nc https://raw.githubusercontent.com/vast-ai/vast-python/master/vast.py -O vast; chmod +x vast; \
+# ./vast start instance ${VAST_CONTAINERLABEL:2} && \
+# bash -e swav/swav_chest.sh && \
+# ./vast stop instance ${VAST_CONTAINERLABEL:2}
 cd swav
 wget -nc https://data.mendeley.com/public-files/datasets/jctsfj2sfn/files/148dd4e7-636b-404b-8a3c-6938158bc2c0/file_downloaded && \
 unzip -n file_downloaded
