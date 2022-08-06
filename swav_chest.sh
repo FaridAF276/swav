@@ -15,7 +15,7 @@ time python dataset_prep.py \
 --dataset_dir ChestX \
 --percentage 0.2
 
-time python -m torch.distributed.launch --nproc_per_node=4 main_swav.py \
+time python -m torch.distributed.launch --nproc_per_node=2 main_swav.py \
 --data_path pretext/train \
 --epochs 500 \
 --base_lr 0.01 \
@@ -35,7 +35,7 @@ time python -m torch.distributed.launch --nproc_per_node=4 main_swav.py \
 --temperature 0.5 \
 --epoch_queue_starts 30
 mkdir -p swav_ssl_checkpoint
-time python -m torch.distributed.launch --nproc_per_node=8 eval_semisup.py \
+time python -m torch.distributed.launch --nproc_per_node=2 eval_semisup.py \
 --data_path downstream \
 --pretrained swav_checkpoint/checkpoint.pth.tar \
 --epochs 200 \
